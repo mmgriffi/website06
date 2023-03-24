@@ -1,0 +1,20 @@
+# This is a basic workflow that is manually triggered
+name: Website 06 Manual workflow
+on: workflow_dispatch
+jobs:
+  building-docker-image:
+    runs-on: docker-runner-05
+    steps:
+      - name: Checkout code 
+        uses: actions/checkout@v3
+      - name: Clean
+        continue-on-error: true
+        run: docker stop website06 && docker rm website06 && docker rmi mmgriffi/website06
+      - name: Build Image 
+        run: docker build -t mmgriffi/website06 .
+      - name: List Image
+        run: docker images
+      - name: Upload image to Docker Hub
+        run: docker push mmgriffi/website06
+      - name: Deploy
+        run: docker run -d --name=website06 -p 8080:80 mmgriffi/website06
