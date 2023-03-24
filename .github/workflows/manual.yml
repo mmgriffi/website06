@@ -3,7 +3,7 @@ name: Website 06 Manual workflow
 on: workflow_dispatch
 jobs:
   building-docker-image:
-    runs-on: docker-runner-05
+    runs-on: runner_docker
     steps:
       - name: Checkout code 
         uses: actions/checkout@v3
