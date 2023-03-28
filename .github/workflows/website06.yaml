@@ -3,7 +3,7 @@ name: Website 06 docker workflow
 on: workflow_dispatch
 jobs:
   building-docker-image:
-    runs-on: runner_docker
+    runs-on: aws_runner
     steps:
       - uses: actions/checkout@v3
         with:
