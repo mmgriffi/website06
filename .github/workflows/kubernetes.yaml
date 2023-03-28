@@ -1,9 +1,7 @@
-name: Build
+name: Kube_Build
 
 on:
   workflow_dispatch:
-    branches:
-      - main
 
 jobs:
   build:
