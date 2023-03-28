@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mmgriffi-deployment
+  labels:
+    app: mmgriffi
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mmgriffi
+  template:
+    metadata:
+      labels:
+        app: mmgriffi
+    spec:
+      containers:
+      - name: web
+        image: mmgriffi/website06
+        ports:
+        - containerPort: 80
