@@ -1,5 +1,5 @@
 # This is a basic workflow that is manually triggered
-name: Website 06 Manual workflow
+name: Website 06 docker workflow
 on: workflow_dispatch
 jobs:
   building-docker-image:
