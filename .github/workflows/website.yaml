@@ -1,0 +1,16 @@
+name: Build
+on:
+  workflow_dispatch
+jobs:
+  build:
+    name: Build
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code 
+        uses: actions/checkout@v3
+      - name: kube-deploy
+        run: kubectl apply -f website-deploy.yaml
+      - name: list deployments
+        run: kubectl get deployments
+      - name: list services
+        run: kubectl get services
