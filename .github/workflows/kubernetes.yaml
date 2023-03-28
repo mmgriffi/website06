@@ -1,0 +1,23 @@
+name: Build
+
+on:
+  workflow_dispatch:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code 
+        uses: actions/checkout@v3
+      - name: Clean
+        continue-on-error: true
+        run: docker stop website06 && docker rm website06 && docker rmi mmgriffi/website06
+      - name: Build Image 
+        run: docker build -t mmgriffi/website06 .
+      - name: kube-deploy
+        run: kubectl apply -f kube_deployment.yaml
+      - name: list deployments
+        run: kubectl get deployments
