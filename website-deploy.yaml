@@ -29,6 +29,6 @@ spec:
     spec:
       containers:
       - name: web
-        image: jaibw/frozenyogurtshop
+        image: mmgriffi/website06
         ports:
         - containerPort: 80
